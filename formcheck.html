@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FormCheck</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="formcheck.css">
+</head>
+<body>
+<div class="screen" id="selectScreen">
+  <div class="brand">FormCheck</div>
+  <div class="brand-sub">Real-time exercise analysis</div>
+  <div class="ex-grid">
+    <div class="ex-card" onclick="chooseExercise('bench')">
+      <div class="ex-card-num">01</div>
+      <span class="ex-card-icon">&#x1F4AA;</span>
+      <div class="ex-card-name">Bench Press</div>
+      <div class="ex-card-hint">Elbow extension<br>Bar path tracking</div>
+    </div>
+    <div class="ex-card" onclick="chooseExercise('squat')">
+      <div class="ex-card-num">02</div>
+      <span class="ex-card-icon">&#x2B07;</span>
+      <div class="ex-card-name">Squat</div>
+      <div class="ex-card-hint">Knee + hip depth<br>Form alignment</div>
+    </div>
+    <div class="ex-card" onclick="chooseExercise('deadlift')">
+      <div class="ex-card-num">03</div>
+      <span class="ex-card-icon">&#x1F3CB;&#xFE0F;</span>
+      <div class="ex-card-name">Deadlift</div>
+      <div class="ex-card-hint">Hip hinge<br>Back alignment</div>
+    </div>
+  </div>
+</div>
+
+<script src="formcheck-state.js"></script>
+<script src="formcheck-select.js"></script>
+</body>
+</html>

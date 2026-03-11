@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FormCheck Setup</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="formcheck.css">
+</head>
+<body>
+<div class="screen" id="setupScreen">
+  <div class="setup-title">
+    <h2 id="setupTitle">Setup</h2>
+    <p id="setupSub">Position your device before starting</p>
+  </div>
+  <div class="setup-diagram">
+    <canvas id="setupCanvas" width="260" height="160"></canvas>
+  </div>
+  <div class="setup-tips" id="setupTips"></div>
+  <div class="setup-disclaimer">Training aid only. This is not a medical assessment.</div>
+  <div class="setup-actions">
+    <button class="btn-ghost" onclick="goBack()">&larr; Back</button>
+    <button class="btn-ghost" onclick="startFromSetup('upload')">Upload Video</button>
+    <button class="btn-primary" onclick="startFromSetup('camera')">Start Camera</button>
+  </div>
+</div>
+
+<script src="formcheck-state.js"></script>
+<script src="formcheck-setup.js"></script>
+</body>
+</html>

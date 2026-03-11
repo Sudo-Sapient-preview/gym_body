@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FormCheck Session</title>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.1.3/dist/pose-detection.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="formcheck.css">
+</head>
+<body>
+<div id="loadOverlay">
+  <div class="load-title">FormCheck</div>
+  <div class="load-bar-track"><div class="load-bar-fill"></div></div>
+  <div class="load-sub" id="loadMsg">Initializing...</div>
+</div>
+
+<div class="screen" id="sessionScreen">
+  <div class="video-wrap">
+    <video id="video" autoplay muted playsinline></video>
+    <canvas id="poseCanvas"></canvas>
+
+    <div class="video-top">
+      <div>
+        <div class="session-ex-name" id="sessionExName">--</div>
+        <div class="session-phase" id="sessionPhase">Waiting for pose...</div>
+      </div>
+      <div class="top-right">
+        <div class="loading-indicator">
+          <div class="loading-dot" id="liveDot"></div>
+          <span id="liveLabel">Loading</span>
+        </div>
+        <button class="analytics-toggle" onclick="toggleAnalyticsPanel()">Menu</button>
+      </div>
+    </div>
+
+    <div class="rep-overlay">
+      <div class="rep-number" id="repNumber">0</div>
+      <div class="rep-unit">Reps</div>
+    </div>
+
+    <div class="warning-overlay" id="warnOverlay"></div>
+
+    <div class="upload-prompt hidden" id="uploadPrompt">
+      <div class="upload-title">Upload Workout Video</div>
+      <div class="upload-sub">Use a clear side-view clip for best rep detection.</div>
+      <div class="upload-actions">
+        <button class="btn-primary" onclick="openVideoUpload()">Select Video</button>
+        <button class="btn-ghost" onclick="window.location.href='setup.html'">Back</button>
+      </div>
+      <input class="hidden-file-input" id="videoFileInput" type="file" accept="video/*" onchange="handleVideoUpload(event)">
+    </div>
+  </div>
+
+  <div class="panel-backdrop" id="panelBackdrop" onclick="closeAnalyticsPanel()"></div>
+
+  <div class="side-panel" id="sidePanel">
+    <div class="panel-mobile-head">
+      <span>Analytics</span>
+      <button class="panel-close-btn" onclick="closeAnalyticsPanel()">Close</button>
+    </div>
+    <div class="panel-section">
+      <div class="panel-label">Joint Angles</div>
+      <div class="angle-rows" id="angleRows"></div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-label">Form Analytics</div>
+      <div class="analytics-status" id="analyticsStatus">Awaiting movement</div>
+      <div class="radar-wrap">
+        <canvas id="radarCanvas" width="240" height="210"></canvas>
+      </div>
+      <div class="checks-list" id="checksList"></div>
+      <div class="reject-note" id="rejectNote"></div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-label">Form Score</div>
+      <div class="form-score-display">
+        <div class="form-score-num" id="formScoreNum">--</div>
+        <div class="form-score-unit">%</div>
+      </div>
+      <div class="form-bar-track"><div class="form-bar-fill" id="formBar" style="width:0%"></div></div>
+      <div class="form-label" id="formLabel">AWAITING DATA</div>
+    </div>
+
+    <div class="panel-section" style="flex:1">
+      <div class="panel-label">Set History</div>
+      <div class="sets-list" id="setsList">
+        <div class="no-sets">No sets yet</div>
+      </div>
+    </div>
+
+    <button class="end-btn" onclick="endSession()">End Set</button>
+  </div>
+</div>
+
+<script src="formcheck-state.js"></script>
+<script src="formcheck.js"></script>
+</body>
+</html>

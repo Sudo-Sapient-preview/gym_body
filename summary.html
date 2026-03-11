@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FormCheck Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="formcheck.css">
+</head>
+<body>
+<div class="screen" id="summaryScreen">
+  <div class="summary-header">
+    <h2>Session Complete</h2>
+    <p id="summaryDate">--</p>
+  </div>
+  <div class="summary-grid">
+    <div class="summary-stat">
+      <div class="summary-stat-val" id="sumTotalReps">0</div>
+      <div class="summary-stat-label">Total Reps</div>
+    </div>
+    <div class="summary-stat">
+      <div class="summary-stat-val" id="sumSets">0</div>
+      <div class="summary-stat-label">Sets</div>
+    </div>
+    <div class="summary-stat">
+      <div class="summary-stat-val" id="sumAvgForm" style="color:var(--accent)">--</div>
+      <div class="summary-stat-label">Avg Form</div>
+    </div>
+    <div class="summary-stat">
+      <div class="summary-stat-val" id="sumWarnings">0</div>
+      <div class="summary-stat-label">Warnings</div>
+    </div>
+    <div class="summary-stat">
+      <div class="summary-stat-val" id="sumBestDepth">--</div>
+      <div class="summary-stat-label">Best Depth</div>
+    </div>
+  </div>
+
+  <div class="summary-breakdown">
+    <div class="breakdown-title">Set Breakdown</div>
+    <div class="breakdown-list" id="breakdownList"></div>
+  </div>
+
+  <div class="summary-breakdown">
+    <div class="breakdown-title">Rep Breakdown</div>
+    <div class="rep-breakdown-list" id="repBreakdownList"></div>
+  </div>
+
+  <div class="summary-actions">
+    <button class="btn-ghost" onclick="exportLatestSet()">Export Last Set</button>
+    <button class="btn-ghost" onclick="newSession()">New Session</button>
+    <button class="btn-primary" onclick="anotherSet()">Another Set</button>
+  </div>
+</div>
+
+<script src="formcheck-state.js"></script>
+<script src="formcheck-summary.js"></script>
+</body>
+</html>
